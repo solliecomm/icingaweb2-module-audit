@@ -12,9 +12,10 @@ class AuditLog extends AuditHook
 {
     public function logMessage($time, $identity, $type, $message, array $data = null)
     {
+        $remoteip = (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+        
         $logConfig = Config::module('audit')->getSection('log');
         if ($logConfig->type === 'file') {
-            $remoteip = (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
             $file = new File($logConfig->get('path', '/var/log/icingaweb2/audit.log'), 'a');
             $file->fwrite(date('c', $time) . ' - ' . $remoteip . ' - ' . $identity . ' - ' . $type . ' - ' . $message . PHP_EOL);
             $file->fflush();
@@ -25,7 +26,7 @@ class AuditLog extends AuditHook
                 $this->resolveSyslogFacility($logConfig->get('facility', 'auth'))
             );
             $date = date('c', $time);
-            syslog(LOG_INFO, "[$date] <$identity> <$type> $message");
+            syslog(LOG_INFO, "[$date][$remoteip] <$identity> <$type> $message");
         }
     }
 
