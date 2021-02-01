@@ -17,7 +17,7 @@ class AuditStream extends AuditHook
             'activity'      => $type,
             'message'       => $message,
             'identity'      => $identity,
-            'remoteip'      => $remoteip
+            'remoteip'      => (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
         ];
         if (! empty($data)) {
             $activityData['data'] = $data;
