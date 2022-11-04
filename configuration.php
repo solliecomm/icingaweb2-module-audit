@@ -1,10 +1,11 @@
 <?php
-/* Icinga Web 2 | (c) 2018 Icinga Development Team | GPLv2+ */
+
+// Icinga Web 2 | (c) 2018 Icinga Development Team | GPLv2+
 
 /** @var $this \Icinga\Application\Modules\Module */
 
 $this->provideConfigTab('config', [
-    'url'   => 'config',
+    'url' => 'config',
     'title' => $this->translate('Configuration')
 ]);
 
@@ -12,12 +13,12 @@ $this->providePermission('audit/log', $this->translate('Allow access to the audi
 
 try {
     if ($this->getConfig()->get('log', 'type') === 'file') {
-        $section = $this->menuSection(N_('System'));
+        $section = $this->menuSection(N_('Reporting'));
         $section->add(N_('Audit Log'), [
-            'permission'    => 'audit/log',
-            'url'           => 'audit/log',
-            'icon'          => 'eye',
-            'priority'      => 910
+            'permission' => 'audit/log',
+            'url' => 'audit/log',
+            'icon' => 'eye',
+            'priority' => 910
         ]);
     }
 } catch (Exception $e) {
