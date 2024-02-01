@@ -1,4 +1,5 @@
 <?php
+
 /* Icinga Web 2 | (c) 2018 Icinga Development Team | GPLv2+ */
 
 namespace Icinga\Module\Audit\ProvidedHook;
@@ -10,7 +11,7 @@ use Icinga\Util\File;
 
 class AuditLog extends AuditHook
 {
-    public function logMessage($time, $identity, $type, $message, array $data = null)
+    public function logMessage($time, $identity, $type, $message, array $data = null): void
     {
         $remoteip = (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
         
@@ -39,10 +40,9 @@ class AuditLog extends AuditHook
      *
      * @throws  InvalidArgumentException    In case of an unknown name
      */
-    protected function resolveSyslogFacility($name)
+    protected function resolveSyslogFacility(string $name): int
     {
-        switch ($name)
-        {
+        switch ($name) {
             case 'auth':
                 return LOG_AUTH;
             case 'authpriv':

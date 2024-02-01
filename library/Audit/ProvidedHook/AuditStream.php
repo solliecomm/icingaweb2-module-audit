@@ -1,4 +1,5 @@
 <?php
+
 /* Icinga Web 2 | (c) 2018 Icinga Development Team | GPLv2+ */
 
 namespace Icinga\Module\Audit\ProvidedHook;
@@ -10,7 +11,7 @@ use Icinga\Util\File;
 
 class AuditStream extends AuditHook
 {
-    public function logMessage($time, $identity, $type, $message, array $data = null)
+    public function logMessage($time, $identity, $type, $message, array $data = null): void
     {
         $activityData = [
             'activity_time' => $time,

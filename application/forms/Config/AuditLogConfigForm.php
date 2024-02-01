@@ -1,4 +1,5 @@
 <?php
+
 /* Icinga Web 2 | (c) 2018 Icinga Development Team | GPLv2+ */
 
 namespace Icinga\Module\Audit\Forms\Config;
@@ -7,7 +8,7 @@ use Icinga\Forms\ConfigForm;
 
 class AuditLogConfigForm extends ConfigForm
 {
-    public function createElements(array $formData)
+    public function createElements(array $formData): void
     {
         $this->addElement(
             'select',
