@@ -61,12 +61,13 @@ class LogController extends CompatController
         $table = new Table();
         $table->addAttributes(['class' => 'action']);
 
-        /** @var object{datetime: string, type: string, identity: string, message: string} $row */
+        /** @var object{datetime: string, type: string, remoteip: string, identity: string, message: string} $row */
         foreach ($query as $row) {
             $time = new DateTime($row->datetime);
             $time->setTimezone(new DateTimeZone(date_default_timezone_get()));
             $table->add([
                 [$time->format('d.m. H:i'), Html::tag('br'), $row->type],
+                $row->remoteip,
                 $row->identity,
                 nl2br(trim($row->message), false),
             ]);
