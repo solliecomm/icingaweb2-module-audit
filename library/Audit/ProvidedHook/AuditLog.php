@@ -1,6 +1,7 @@
 <?php
 
-/* Icinga Web 2 | (c) 2018 Icinga Development Team | GPLv2+ */
+// SPDX-FileCopyrightText: 2018 Icinga GmbH <https://icinga.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 namespace Icinga\Module\Audit\ProvidedHook;
 
@@ -11,7 +12,7 @@ use Icinga\Util\File;
 
 class AuditLog extends AuditHook
 {
-    public function logMessage($time, $identity, $type, $message, array $data = null): void
+    public function logMessage($time, $identity, $type, $message, ?array $data = null): void
     {
         $remoteip = (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
         

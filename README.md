@@ -11,10 +11,17 @@
 
 ## About
 
+The audit module, if enabled, allows other modules to write audit logs. It provides the `AuditLog` and `AuditStream`
+hooks. Those are used by Icinga Web’s `AuditHook::logActivity()` to write audit logs.
+
+The screenshot shows how the audit logs look like in Icinga Web.
+
+![Screenshot - Audit Logs](doc/res/screenshot-audit-logs.png)
+
 ## License
 
-Icinga Web 2 and this Icinga Web 2 module are licensed under the terms of the GNU General Public License Version 2,
-you will find a copy of this license in the LICENSE file included in the source package.
+Icinga Web 2 and this Icinga Web 2 module are licensed under the terms of the GNU General Public License Version 3,
+you will find a copy of this license in the LICENSE.md file included in the source package.
 
 ## Support
 
